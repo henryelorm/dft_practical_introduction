@@ -1,0 +1,31 @@
+# SYSTEM --- "CU surface test"
+# Henry E. Quarshie
+# 20 January 2023
+
+# Global Parameters
+ALGO   = Normal        #(blocked Davidson iteration scheme for electronic minimization algo.)
+PREC   =  Accurate     #(Precision level: Normal or Accurate, set Accurate when perform structure lattice relaxation calculation)
+ISTART =  0            #(Read existing wavefunction, if there)
+ISPIN  =  1            #(Non-Spin polarised DFT)
+ISYM   =  2            #(default: 2, more efficient, memory conserving symmetrization)
+LWAVE  = .FALSE.       # (Write WAVECAR or not)
+LCHARG = .FALSE.       # (Write CHGCAR or not)
+ADDGRID= .TRUE.        #(Increase grid, helps GGA convergence)
+
+
+#Electronic Relaxation
+ENCUT  =  380
+ISMEAR =  1           #(Methfessel-Paxton, metals:1)
+SIGMA  = 0.1
+#LREAL =   Auto        #(Projection operators)
+NELM   =  400         #(Max electronic SCF steps)
+# NELMIN =  30        #  (Min electronic SCF steps)
+EDIFF  =  1E-07       #(SCF energy convergence, in eV)
+
+
+
+#Ionic Relaxation      (no relaxation)
+NSW    =  300         #(Max ionic steps)
+IBRION =  2           #(Algorithm: 0-MD, 1-Quasi-New, 2-CG)
+ISIF  = 2
+EDIFFG = -2E-03       #(Ionic convergence, eV/AA)
