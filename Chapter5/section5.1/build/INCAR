@@ -9,7 +9,7 @@ ISTART =  0            #(Read existing wavefunction, if there)
 ISPIN  =  1            #(Non-Spin polarised DFT)
 ISYM   =  2            #(default: 2, more efficient, memory conserving symmetrization)
 ADDGRID= .TRUE.        #(Increase grid, helps GGA convergence)
-
+    
 
 #Electronic Relaxation
 ENCUT  =  380
@@ -22,7 +22,7 @@ EDIFF  =  1E-07       #(SCF energy convergence, in eV)
 
 
 
-NSW    =  1                 #(Max ionic steps)
+NSW    =  100                 #(Max ionic steps)
 IBRION =  5                 #(Algorithm: -1-no-update, 0-MD, 1-Quasi-New, 2-CG, 5-fd no-sym, 6-fd sym )
 NFREE  =  2
 POTIM  = 0.015              #(step size- default 0.015)
