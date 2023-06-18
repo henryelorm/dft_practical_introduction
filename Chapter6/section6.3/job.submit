@@ -1,0 +1,44 @@
+#!/bin/bash
+#PBS -P id
+#PBS -N Ag/Cu(100)-cineb_idpp
+#PBS -l select=1:ncpus=24:mpiprocs=24
+#PBS -l place=excl
+#PBS -l walltime=24:00:00
+#PBS -q smp
+#PBS -m be
+#PBS -M email
+#PBS -r n
+
+
+# echo job info on joblog:
+echo "Job $JOB_ID started on:   " `hostname -s`
+echo "Job $JOB_ID started on:   " `date `
+echo " "
+
+# load the job environment:
+
+module purge
+module add chpc/parallel_studio_xe/2020u1
+module add chpc/vasp/6.3.0/parallel_studio/2020u1
+module add chpc/python/anaconda/3-2021.05
+module add chpc/compmech/gnuplot/5.4.3
+
+ulimit -s unlimited
+pushd work-directory
+
+
+export VASP="${HOME}/to-vasp-code"
+
+
+# substitute the command to run your code below:
+# for direct run
+#-------------------------------------------------------------
+mpirun -np  20  vasp_std | tee -a vasp.joblog.$JOB_ID
+#-------------------------------------------------------------
+
+
+# echo job info on joblog:
+echo "Job $JOB_ID ended on:   " `hostname -s`
+echo "Job $JOB_ID ended on:   " `date `
+echo " "
+#### STOP ####

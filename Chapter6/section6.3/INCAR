@@ -1,0 +1,43 @@
+# SYSTEM --- "Ag/Cu(100) - neb"
+# Henry E. Quarshie
+
+
+# Global Parameters
+ALGO   = Normal        #(blocked Davidson iteration scheme for electronic minimization algo.)
+PREC   =  Accurate     #(Precision level: Normal or Accurate, set Accurate when perform structure lattice relaxation calculation)
+ISTART =  0            #(Read existing wavefunction, if there)
+ISPIN  =  1            #(Non-Spin polarised DFT)
+ISYM   =  2            #(default: 2, more efficient, memory conserving symmetrization)
+LWAVE  = .FALSE.       # (Write WAVECAR or not)
+LCHARG = .FALSE.       # (Write CHGCAR or not)
+ADDGRID= .TRUE.        #(Increase grid, helps GGA convergence)
+NWRITE = 3
+SYMPREC = 1E-07
+
+
+#Electronic Relaxation
+ENCUT  = 380
+ISMEAR =  1           #(Methfessel-Paxton, metals:1)
+SIGMA  = 0.1
+LREAL =   Auto        #(Projection operators)
+NELM   =  400         #(Max electronic SCF steps)
+EDIFF  =  1E-07       #(SCF energy convergence, in eV)
+
+
+#Ionic Relaxation      (no relaxation)
+NSW    =  500         #(Max ionic steps)
+# IBRION =  3         check neb section  #(Algorithm: 0-MD, 1-Quasi-New, 2-CG) 
+ISIF  = 2
+EDIFFG = -2E-03       #(Ionic convergence, eV/AA)
+
+
+# CI-NEB
+IMAGES  =  5          # Number of NEB images between the fixed endpoints
+POTIM   =  0          # helps invoke VTST optimizer, when value is 0
+ICHAIN  =  0
+IBRION  =  3
+IOPT    =  3          # Optimizer (0-user vasp optimizer, 1-LBFGS, 2-CG  ,3-QM Parameters)
+# TIMESTEP  = 0.1      # wotks with IOPT 3
+SPRING  = -5          # The spring constant, in eV/Ang^2 between the images; negative value turns on nudging
+LCLIMB  =  .TRUE.     # Flag to turn on the climbing image algorithm
+#LNEBCELL = .TRUE.
